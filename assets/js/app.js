@@ -1,5 +1,5 @@
 // =========================
-// Content setup
+// Content
 // =========================
 document.getElementById("title").innerText = CONFIG.title;
 document.getElementById("subtitle").innerText = CONFIG.subtitle;
@@ -39,10 +39,16 @@ updateTimer();
 setInterval(updateTimer, 1000 * 60 * 60);
 
 // =========================
-// Balloon animation
+// BALLOONS (GUARANTEED)
 // =========================
 (function balloons() {
-  const layer = document.querySelector(".balloon-layer");
+  let layer = document.querySelector(".balloon-layer");
+  if (!layer) {
+    layer = document.createElement("div");
+    layer.className = "balloon-layer";
+    document.body.prepend(layer);
+  }
+
   const colors = [
     "#ff7aa2",
     "#ffd27d",
@@ -55,14 +61,15 @@ setInterval(updateTimer, 1000 * 60 * 60);
     const b = document.createElement("div");
     b.className = "balloon";
 
-    const size = 26 + Math.random() * 26;
+    const size = 28 + Math.random() * 28;
     b.style.width = `${size}px`;
     b.style.height = `${size * 1.3}px`;
     b.style.background = colors[Math.floor(Math.random() * colors.length)];
 
+    const edge = 100;
     const x = side === "left"
-      ? Math.random() * 80
-      : window.innerWidth - 80 + Math.random() * 80;
+      ? 10 + Math.random() * edge
+      : window.innerWidth - edge - 10 + Math.random() * edge;
 
     b.style.left = `${x}px`;
     b.style.animationDuration = `${6 + Math.random() * 6}s`;
@@ -73,7 +80,13 @@ setInterval(updateTimer, 1000 * 60 * 60);
     b.addEventListener("animationend", () => b.remove());
   }
 
+  // immediate balloons
+  for (let i = 0; i < 12; i++) {
+    spawn(i % 2 === 0 ? "left" : "right");
+  }
+
+  // continuous
   setInterval(() => {
     spawn(Math.random() < 0.5 ? "left" : "right");
-  }, 450);
+  }, 400);
 })();
