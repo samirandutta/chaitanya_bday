@@ -10,23 +10,39 @@
 body{
   margin:0;
   min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: linear-gradient(135deg, var(--bg1), var(--bg2));
-  color:#fff;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:#fff;
   text-align:center;
 
-  /* IMPORTANT: allow content to be visible / scrollable */
+  /* TILED GIF BACKGROUND */
+  background-image: url("/chaitanya_bday/assets/img/catus.gif");
+  background-repeat: repeat;
+  background-size: 220px 220px;
+  background-position: center;
+
   overflow:auto;
 }
 
+/* Dark overlay for readability */
+body::before{
+  content:"";
+  position: fixed;
+  inset:0;
+  background: linear-gradient(
+    135deg,
+    rgba(15,16,32,0.88),
+    rgba(27,28,51,0.88)
+  );
+  z-index: 0;
+}
+
+/* Wrapper */
 .wrap{
-  width:min(860px, 94vw);
-  min-height: 100vh;
-  padding: 28px 18px 40px;
   position: relative;
+  z-index: 1;
+  width:min(860px, 94vw);
+  min-height:100vh;
+  margin: 0 auto;
 }
 
 /* Both steps overlay each other */
@@ -41,6 +57,7 @@ body{
   padding: 28px 18px 40px;
 }
 
+/* Fade-in line */
 .line{
   font-family: Fraunces, serif;
   font-weight: 600;
@@ -58,7 +75,7 @@ body{
   to{ opacity:1; transform: translateY(0); }
 }
 
-/* World image fades in after text */
+/* World image container */
 .worldTap{
   position: relative;
   width: min(360px, 78vw);
@@ -72,6 +89,7 @@ body{
   animation-delay: 1200ms;
 }
 
+/* Heart beat + shine */
 .worldImg{
   width: 100%;
   height: auto;
@@ -85,33 +103,34 @@ body{
   position:absolute;
   inset: 12% 18% 18% 18%;
   border-radius: 999px;
-  background: radial-gradient(circle at 50% 55%,
+  background: radial-gradient(
+    circle at 50% 55%,
     rgba(255,120,162,0.45) 0%,
     rgba(255,120,162,0.16) 35%,
-    rgba(255,120,162,0.0) 70%);
-  opacity: 0.0;
+    rgba(255,120,162,0.0) 70%
+  );
   animation: glow 1.15s ease-in-out infinite;
   pointer-events:none;
 }
 
 @keyframes beat{
-  0%, 100% { transform: scale(1); }
-  35%      { transform: scale(1.04); }
-  60%      { transform: scale(0.99); }
+  0%,100%{ transform: scale(1); }
+  35%{ transform: scale(1.04); }
+  60%{ transform: scale(0.99); }
 }
 
 @keyframes glow{
-  0%, 100% { opacity: 0.10; transform: scale(0.98); }
-  35%      { opacity: 0.42; transform: scale(1.05); }
-  60%      { opacity: 0.14; transform: scale(1.00); }
+  0%,100%{ opacity: 0.12; transform: scale(0.98); }
+  35%{ opacity: 0.45; transform: scale(1.05); }
+  60%{ opacity: 0.18; transform: scale(1); }
 }
 
 .tapHint{
-  margin: 10px 0 0;
+  margin-top: 10px;
   opacity: 0.85;
 }
 
-/* Step2 reveal */
+/* STEP 2 (hidden initially) */
 .step2{
   opacity: 0;
   pointer-events: none;
@@ -125,27 +144,30 @@ body{
   transform: translateY(0);
 }
 
-/* Fade out step1 */
+/* Fade out step 1 */
 .step1.fadeOut{
   animation: vanish 650ms ease forwards;
 }
 
 @keyframes vanish{
-  to{ opacity: 0; transform: scale(0.98); filter: blur(2px); }
+  to{
+    opacity:0;
+    transform: scale(0.98);
+    filter: blur(2px);
+  }
 }
 
-/* Us photo sizing: keep it on screen */
+/* Us image — stays on screen */
 .us{
   width: min(560px, 94vw);
-  max-height: 55vh;      /* prevents it from pushing caption off-screen */
-  height: auto;
+  max-height: 55vh;
   object-fit: contain;
   display:block;
   border-radius: 18px;
   box-shadow: 0 22px 40px var(--shadow);
 }
 
-/* Caption now always visible */
+/* Caption under image */
 .caption{
   font-family: Fraunces, serif;
   font-weight: 600;
@@ -155,6 +177,7 @@ body{
   text-shadow: 0 10px 22px rgba(0,0,0,0.55);
 }
 
+/* Continue button */
 .btn{
   margin-top: 10px;
   padding: 0.85rem 1.4rem;
