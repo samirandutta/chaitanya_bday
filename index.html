@@ -3,31 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday ❤️</title>
+  <title>Quick Check 👀</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/intro.css">
+  <link rel="stylesheet" href="assets/css/gate.css">
 </head>
 
 <body>
-  <div class="wrap">
-    <h1>Happy Birthday ❤️</h1>
-    <p class="hint">Tap the candle flame to blow it out</p>
+  <main class="wrap">
+    <h1 id="question">Are you XXX?</h1>
 
-    <div class="stage" id="stage" role="button" tabindex="0" aria-label="Blow out the candle">
-      <img class="tiramisu-img" src="assets/img/tiramisu.png" alt="Tiramisu" />
-
-      <!-- Candle overlay -->
-      <div class="candle">
-        <div class="candle-body"></div>
-        <div class="flame" id="flame"></div>
-        <div class="smoke" id="smoke"></div>
-      </div>
+    <div class="card" id="card">
+      <img id="catImg" src="assets/img/cat1.jpg" alt="Cat" />
+      <p id="message" class="message">Be honest.</p>
     </div>
 
-    <p class="small">After you blow it out, your surprise begins.</p>
-  </div>
+    <div class="btnRow" id="btnRow">
+      <button class="btn yes" id="yesBtn">Yes</button>
+      <button class="btn no" id="noBtn">No</button>
+    </div>
+  </main>
 
-  <script src="assets/js/intro.js"></script>
+  <script src="assets/js/gate.js"></script>
 </body>
 </html>
