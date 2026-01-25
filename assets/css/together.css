@@ -67,7 +67,7 @@ body{
 }
 
 .gif{
-  width: min(350px, 80vw);   /* reduced size */
+  width: min(300px, 80vw);   /* reduced size */
   height: auto;
   display:block;
   border-radius: 16px;
