@@ -67,12 +67,13 @@ body{
 }
 
 .gif{
-  width: min(520px, 92vw);
+  width: min(350px, 80vw);   /* reduced size */
   height: auto;
   display:block;
-  border-radius: 18px;
-  box-shadow: 0 22px 40px var(--shadow);
+  border-radius: 16px;
+  box-shadow: 0 18px 32px var(--shadow);
 }
+
 
 .btn{
   margin-top: 6px;
