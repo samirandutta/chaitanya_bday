@@ -1,6 +1,6 @@
 const introStage = document.getElementById("introStage");
 const finalStage = document.getElementById("finalStage");
-const lighthouseWrap = document.getElementById("lighthouseWrap");
+const lighthouseBtn = document.getElementById("lighthouseBtn");
 const bg = document.querySelector(".bg");
 
 function revealFinal() {
@@ -13,8 +13,8 @@ function revealFinal() {
   }, 450);
 }
 
-lighthouseWrap.addEventListener("click", revealFinal);
-lighthouseWrap.addEventListener("keydown", (e) => {
+lighthouseBtn.addEventListener("click", revealFinal);
+lighthouseBtn.addEventListener("keydown", (e) => {
   if (e.key === "Enter" || e.key === " ") {
     e.preventDefault();
     revealFinal();
