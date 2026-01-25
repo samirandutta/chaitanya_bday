@@ -23,7 +23,7 @@ body{
   /* If relative paths work for you, you can use: url("assets/img/catwoah.gif") */
   background-image: url("/chaitanya_bday/assets/img/catwoah.gif");
   background-repeat: repeat;
-  background-size: 220px 220px;
+  background-size: 220px 200px;
   background-position: center;
 
   opacity: 0;
@@ -177,7 +177,7 @@ body{
 
 /* no tablet/card behind */
 .her{
-  width: 82%;
+  width: 100%;
   max-width: 340px;
   margin: 0 auto;
   height: auto;
