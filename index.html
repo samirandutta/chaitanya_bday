@@ -12,27 +12,19 @@
 <body>
   <div class="wrap">
     <h1>Happy Birthday ❤️</h1>
-    <p class="hint">Click the flame to blow it out</p>
+    <p class="hint">Tap the candle flame to blow it out</p>
 
-    <div class="cake-stage">
-      <div class="cake" id="cake" role="button" tabindex="0" aria-label="Blow out the candle">
-        <div class="iso-shadow"></div>
+    <div class="stage" id="stage" role="button" tabindex="0" aria-label="Blow out the candle">
+      <img class="tiramisu-img" src="assets/img/tiramisu.jpg" alt="Tiramisu" />
 
-        <div class="tiramisu-iso">
-          <div class="top"></div>
-          <div class="front"></div>
-          <div class="side"></div>
-
-          <div class="candle">
-            <div class="candle-body"></div>
-            <div class="flame" id="flame"></div>
-            <div class="smoke" id="smoke"></div>
-          </div>
-        </div>
+      <!-- Candle overlay -->
+      <div class="candle">
+        <div class="candle-body"></div>
+        <div class="flame" id="flame"></div>
+        <div class="smoke" id="smoke"></div>
       </div>
     </div>
 
-    <button class="btn" id="blowBtn">Blow the candle ✨</button>
     <p class="small">After you blow it out, your surprise begins.</p>
   </div>
 
