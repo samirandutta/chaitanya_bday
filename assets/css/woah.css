@@ -21,12 +21,13 @@ body{
   inset: 0;
   z-index: 0;
 
-  /* Replace this file with your GIF */
-  background-image: url("assets/img/catwoah.gif");
+  background-color: #000;
+  background-image: url("/chaitanya_bday/assets/img/catwoah.gif");
   background-repeat: repeat;
-  background-size: 220px 220px; /* tile size, tweak if you want */
+  background-size: 200px 200px;
   background-position: center;
 }
+
 
 .bg::after{
   content:"";
