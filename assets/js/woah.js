@@ -1,7 +1,27 @@
-// assets/js/woah.js (REPLACE FULL FILE)
+const introStage = document.getElementById("introStage");
+const finalStage = document.getElementById("finalStage");
+const lighthouseWrap = document.getElementById("lighthouseWrap");
+const bg = document.querySelector(".bg");
+
+function revealFinal() {
+  introStage.classList.add("fadeOut");
+
+  setTimeout(() => {
+    bg.classList.add("show");
+    finalStage.classList.add("show");
+    finalStage.setAttribute("aria-hidden", "false");
+  }, 450);
+}
+
+lighthouseWrap.addEventListener("click", revealFinal);
+lighthouseWrap.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    revealFinal();
+  }
+});
 
 document.getElementById("continueBtn").addEventListener("click", () => {
-  // ensure main tries to play music
   sessionStorage.setItem("autoplaySong", "1");
   window.location.href = "main.html";
 });
