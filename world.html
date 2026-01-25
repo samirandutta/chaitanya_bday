@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌍❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/world.css">
+</head>
+
+<body>
+  <main class="wrap" id="wrap">
+    <!-- Step 1 -->
+    <section class="step step1" id="step1">
+      <h1 class="line" id="line">thank you for letting me in your world..</h1>
+
+      <div class="worldTap" id="worldTap" role="button" tabindex="0" aria-label="Tap the heart">
+        <img class="worldImg" src="assets/img/world.png" alt="World holding a heart" />
+        <div class="glow" aria-hidden="true"></div>
+        <p class="tapHint">Tap the heart ✨</p>
+      </div>
+    </section>
+
+    <!-- Step 2 (hidden until tap) -->
+    <section class="step step2" id="step2" aria-hidden="true">
+      <img class="us" src="assets/img/us2.jpeg" alt="Us" />
+      <div class="caption">…and I hope we can build one together someday.</div>
+      <button class="btn" id="toMain">Continue →</button>
+    </section>
+  </main>
+
+  <script src="assets/js/world.js"></script>
+</body>
+</html>
