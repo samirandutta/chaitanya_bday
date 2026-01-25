@@ -1,3 +1,5 @@
+/* assets/css/intro.css (FULL) */
+
 :root{
   --bg1:#0f1020;
   --bg2:#1b1c33;
@@ -88,12 +90,12 @@ h1{
 .iso-shadow{
   position:absolute;
   left: 50%;
-  top: 202px;
+  top: 208px;
   width: 260px;
-  height: 88px;
+  height: 86px;
   transform: translateX(-50%);
   background: rgba(0,0,0,0.22);
-  filter: blur(8px);
+  filter: blur(9px);
   border-radius: 60px;
   z-index: 0;
 }
@@ -130,8 +132,46 @@ h1{
   box-shadow: 0 10px 0 rgba(0,0,0,0.08);
 }
 
+/* drip: icing hanging off the cocoa top */
+.tiramisu-iso .top::after{
+  content:"";
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: -22px;
+  height: 46px;
+  border-left: 3px solid var(--outline);
+  border-right: 3px solid var(--outline);
+  background:
+    radial-gradient(40px 26px at 12% 0%, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 71%),
+    linear-gradient(180deg, rgba(247,231,200,0.95), rgba(236,216,179,0.95));
+  /* scalloped drips */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 45%,
+    92% 52%,
+    85% 78%,
+    77% 48%,
+    68% 60%,
+    60% 92%,
+    52% 55%,
+    44% 72%,
+    35% 48%,
+    28% 85%,
+    20% 58%,
+    12% 78%,
+    6% 50%,
+    0% 48%
+  );
+  border-bottom: 3px solid var(--outline);
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  opacity: 0.95;
+}
+
 /* =========================
-   FRONT FACE (layers) — NO WHITE CIRCLES
+   FRONT FACE (layers)
    ========================= */
 .tiramisu-iso .front{
   position:absolute;
@@ -154,7 +194,7 @@ h1{
   overflow:hidden;
 }
 
-/* sponge texture speckles (subtle, not circles graphics) */
+/* subtle sponge speckles */
 .tiramisu-iso .front::after{
   content:"";
   position:absolute;
@@ -170,9 +210,7 @@ h1{
   opacity: 0.55;
 }
 
-/* =========================
-   REMOVE RIGHT DIAGONAL FACE
-   ========================= */
+/* REMOVE right diagonal face */
 .tiramisu-iso .side{
   display: none;
 }
