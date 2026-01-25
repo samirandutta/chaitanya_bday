@@ -130,11 +130,13 @@ body{
 }
 
 .us{
-  width: min(520px, 94vw);
+  width: 95%;          /* bigger on mobile */
+  max-width: 500px;    /* larger cap on desktop */
+  margin: 0 auto;
   height: auto;
   display:block;
   border-radius: 18px;
-  box-shadow: 0 22px 40px var(--shadow);
+  box-shadow: 0 22px 44px rgba(0,0,0,0.45);
 }
 
 .caption{
