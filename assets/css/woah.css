@@ -57,10 +57,14 @@ body{
 }
 
 .her{
-  width: 100%;
+  width: 85%;          /* was 100% */
+  max-width: 360px;    /* keeps it neat on large screens */
+  margin: 18px auto 0;
   height: auto;
   display:block;
+  border-radius: 14px; /* optional: softer look */
 }
+
 
 .name{
   font-family: Fraunces, serif;
