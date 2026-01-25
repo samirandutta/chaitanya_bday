@@ -13,36 +13,25 @@
   <!-- Tiled GIF background (only visible after lighthouse step) -->
   <div class="bg" aria-hidden="true"></div>
 
-  <!-- STEP 1: Text + Lighthouse -->
+  <!-- STEP 1 -->
   <main class="stage stage--intro" id="introStage">
     <h1 class="line">you have become the lighthouse of my universe</h1>
 
-    <div class="lighthouseWrap" id="lighthouseWrap" role="button" tabindex="0" aria-label="Click the lighthouse">
-      <div class="lighthouse">
+    <div class="lighthouseBtn" id="lighthouseBtn" role="button" tabindex="0" aria-label="Click the lighthouse">
+      <div class="beams" aria-hidden="true">
         <div class="beam beam1"></div>
         <div class="beam beam2"></div>
-
-        <div class="tower">
-          <div class="towerStripe"></div>
-          <div class="towerStripe"></div>
-          <div class="towerStripe"></div>
-        </div>
-
-        <div class="top">
-          <div class="lantern"></div>
-          <div class="roof"></div>
-        </div>
-
-        <div class="base"></div>
       </div>
+
+      <img class="lighthouseImg" src="assets/img/lighthouse.png" alt="Lighthouse" />
       <p class="tapHint">Tap the lighthouse ✨</p>
     </div>
   </main>
 
-  <!-- STEP 2: Final view (GIF + picture + text + button) -->
+  <!-- STEP 2 -->
   <main class="stage stage--final" id="finalStage" aria-hidden="true">
     <div class="finalWrap">
-      <img class="her" src="assets/img/her1.jpeg" alt="Her photo" />
+      <img class="her" src="assets/img/her.jpg" alt="Her photo" />
       <div class="name">xyzzy</div>
       <button class="btn" id="continueBtn">Continue →</button>
     </div>
