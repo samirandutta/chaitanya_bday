@@ -3,14 +3,15 @@ const step2 = document.getElementById("step2");
 const worldTap = document.getElementById("worldTap");
 
 function revealUs() {
-  // fade out first step
   step1.classList.add("fadeOut");
 
-  // show second step after a beat
   setTimeout(() => {
+    // fully remove step1 from layout/clicks
+    step1.style.display = "none";
+
     step2.classList.add("show");
     step2.setAttribute("aria-hidden", "false");
-  }, 450);
+  }, 650);
 }
 
 worldTap.addEventListener("click", revealUs);
@@ -22,7 +23,6 @@ worldTap.addEventListener("keydown", (e) => {
 });
 
 document.getElementById("toMain").addEventListener("click", () => {
-  // keep music autoplay intent
   sessionStorage.setItem("autoplaySong", "1");
   window.location.href = "main.html";
 });
