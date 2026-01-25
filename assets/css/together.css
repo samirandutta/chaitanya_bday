@@ -1,0 +1,87 @@
+:root{
+  --pink:#ff7aa2;
+  --shadow: rgba(0,0,0,0.35);
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:#000;
+  overflow:hidden;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:#fff;
+  text-align:center;
+}
+
+/* full-screen tiled stars gif */
+.stars{
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background-color: #000;
+  background-image: url("/chaitanya_bday/assets/img/stars.gif");
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  background-position: center;
+}
+
+/* optional: a light dim so text is readable, not a gradient */
+.stars::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.35);
+}
+
+/* content */
+.wrap{
+  position: relative;
+  z-index: 1;
+  min-height:100vh;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  gap: 14px;
+  padding: 28px 18px 40px;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 900ms ease forwards;
+}
+
+@keyframes fadeUp{
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.topText, .bottomText{
+  font-family: Fraunces, serif;
+  font-weight: 600;
+  font-size: clamp(18px, 2.8vw, 34px);
+  line-height: 1.2;
+  text-shadow: 0 10px 22px rgba(0,0,0,0.55);
+  max-width: 900px;
+}
+
+.gif{
+  width: min(520px, 92vw);
+  height: auto;
+  display:block;
+  border-radius: 18px;
+  box-shadow: 0 22px 40px var(--shadow);
+}
+
+.btn{
+  margin-top: 6px;
+  padding: 0.85rem 1.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #000;
+  font-size: 1rem;
+  cursor:pointer;
+  box-shadow: 0 14px 26px rgba(0,0,0,0.35);
+}
