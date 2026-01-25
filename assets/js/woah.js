@@ -23,5 +23,5 @@ lighthouseBtn.addEventListener("keydown", (e) => {
 
 document.getElementById("continueBtn").addEventListener("click", () => {
   sessionStorage.setItem("autoplaySong", "1");
-  window.location.href = "main.html";
+  window.location.href = "world.html";
 });
