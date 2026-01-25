@@ -11,19 +11,36 @@ body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:#fff;
   text-align:center;
-  background: #000;   /* PURE BLACK BASE */
-  overflow:auto;
+  background:#000;
+  overflow:hidden;
 }
 
-/* wrapper */
+/* FULL-SCREEN GIF BACKGROUND */
+.gif-bg{
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background-color: #000;
+  background-image: url("/chaitanya_bday/assets/img/catus.gif");
+  background-repeat: repeat;
+  background-size: 220px 220px;
+  background-position: center;
+
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+/* content wrapper */
 .wrap{
   position: relative;
+  z-index: 1;
   width:min(860px, 94vw);
   min-height:100vh;
   margin: 0 auto;
 }
 
-/* both stages overlap */
+/* shared stage */
 .step{
   position: absolute;
   inset: 0;
@@ -36,10 +53,10 @@ body{
 }
 
 /* ======================
-   STAGE 1 — BLACK ONLY
+   STAGE 1 — PURE BLACK
    ====================== */
 .step1{
-  background: #000;
+  background:#000;
   z-index: 2;
 }
 
@@ -128,18 +145,10 @@ body{
 }
 
 /* ======================
-   STAGE 2 — GIF ONLY
+   STAGE 2 — CONTENT
    ====================== */
 .step2{
   z-index: 1;
-  background-color: #000;
-
-  /* TILED GIF — NO GRADIENT, NO OVERLAY */
-  background-image: url("/chaitanya_bday/assets/img/catus.gif");
-  background-repeat: repeat;
-  background-size: 220px 220px;
-  background-position: center;
-
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
