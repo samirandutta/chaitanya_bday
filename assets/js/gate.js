@@ -1,5 +1,5 @@
 // Change this to her name (or whatever you want)
-const PERSON = "XXX";
+const PERSON = "Chaitanya";
 
 const question = document.getElementById("question");
 const catImg = document.getElementById("catImg");
