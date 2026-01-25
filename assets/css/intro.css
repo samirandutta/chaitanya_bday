@@ -84,16 +84,16 @@ h1{
   cursor: pointer;
 }
 
-/* soft isometric shadow under the block */
+/* soft shadow under the block */
 .iso-shadow{
   position:absolute;
   left: 50%;
-  top: 190px;
+  top: 202px;
   width: 260px;
-  height: 110px;
-  transform: translateX(-50%) skewX(-20deg);
+  height: 88px;
+  transform: translateX(-50%);
   background: rgba(0,0,0,0.22);
-  filter: blur(6px);
+  filter: blur(8px);
   border-radius: 60px;
   z-index: 0;
 }
@@ -101,7 +101,7 @@ h1{
 .tiramisu-iso{
   position:absolute;
   left: 50%;
-  top: 78px;
+  top: 86px;
   transform: translateX(-50%);
   width: 260px;
   height: 200px;
@@ -113,43 +113,36 @@ h1{
    ========================= */
 .tiramisu-iso .top{
   position:absolute;
-  left: 30px;
+  left: 10px;
   top: 0px;
-  width: 220px;
-  height: 72px;
-  transform: skewX(-20deg);
+  width: 240px;
+  height: 74px;
   border-radius: 18px;
   border: 3px solid var(--outline);
   background:
-    radial-gradient(circle at 18% 40%, rgba(0,0,0,0.25) 0 2px, transparent 3px),
-    radial-gradient(circle at 28% 65%, rgba(0,0,0,0.22) 0 2px, transparent 3px),
-    radial-gradient(circle at 40% 35%, rgba(0,0,0,0.22) 0 2px, transparent 3px),
-    radial-gradient(circle at 55% 55%, rgba(0,0,0,0.22) 0 2px, transparent 3px),
-    radial-gradient(circle at 70% 38%, rgba(0,0,0,0.22) 0 2px, transparent 3px),
-    radial-gradient(circle at 82% 62%, rgba(0,0,0,0.22) 0 2px, transparent 3px),
+    radial-gradient(circle at 18% 40%, rgba(0,0,0,0.20) 0 2px, transparent 3px),
+    radial-gradient(circle at 28% 65%, rgba(0,0,0,0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 40% 35%, rgba(0,0,0,0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 55% 55%, rgba(0,0,0,0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 38%, rgba(0,0,0,0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 82% 62%, rgba(0,0,0,0.18) 0 2px, transparent 3px),
     linear-gradient(180deg, var(--cocoa), var(--cocoa2));
   box-shadow: 0 10px 0 rgba(0,0,0,0.08);
 }
 
 /* =========================
-   FRONT FACE (layers)
+   FRONT FACE (layers) — NO WHITE CIRCLES
    ========================= */
 .tiramisu-iso .front{
   position:absolute;
-  left: 30px;
-  top: 60px;
-  width: 220px;
-  height: 126px;
+  left: 10px;
+  top: 62px;
+  width: 240px;
+  height: 130px;
   border-radius: 0 0 18px 18px;
   border: 3px solid var(--outline);
   border-top: none;
   background:
-    /* creamy bulges */
-    radial-gradient(circle at 20% 35%, rgba(255,255,255,0.35) 0 26px, transparent 27px),
-    radial-gradient(circle at 55% 55%, rgba(255,255,255,0.35) 0 24px, transparent 25px),
-    radial-gradient(circle at 85% 35%, rgba(255,255,255,0.35) 0 20px, transparent 21px),
-
-    /* layer stack */
     linear-gradient(
       180deg,
       var(--cream) 0 30%,
@@ -161,7 +154,7 @@ h1{
   overflow:hidden;
 }
 
-/* sponge texture speckles */
+/* sponge texture speckles (subtle, not circles graphics) */
 .tiramisu-iso .front::after{
   content:"";
   position:absolute;
@@ -174,43 +167,22 @@ h1{
     radial-gradient(circle at 55% 40%, rgba(0,0,0,0.12) 0 2px, transparent 3px),
     radial-gradient(circle at 72% 65%, rgba(0,0,0,0.10) 0 2px, transparent 3px),
     radial-gradient(circle at 88% 35%, rgba(0,0,0,0.10) 0 2px, transparent 3px);
-  opacity: 0.7;
+  opacity: 0.55;
 }
 
 /* =========================
-   SIDE FACE (right face)
+   REMOVE RIGHT DIAGONAL FACE
    ========================= */
 .tiramisu-iso .side{
-  position:absolute;
-  left: 240px;
-  top: 10px;
-  width: 62px;
-  height: 176px;
-  transform: skewY(-20deg);
-  border-radius: 0 18px 18px 0;
-  border: 3px solid var(--outline);
-  background:
-    /* creamy bulges on side */
-    radial-gradient(circle at 45% 30%, rgba(255,255,255,0.30) 0 20px, transparent 21px),
-    radial-gradient(circle at 55% 55%, rgba(255,255,255,0.28) 0 18px, transparent 19px),
-    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.26) 0 16px, transparent 17px),
-    linear-gradient(
-      180deg,
-      #e8d6b1 0 32%,
-      #5c341f 32% 46%,
-      #e0caa1 46% 74%,
-      #2f1710 74% 88%,
-      var(--sponge2) 88% 100%
-    );
-  box-shadow: inset 8px 0 0 rgba(0,0,0,0.10);
+  display: none;
 }
 
 /* =========================
-   Candle (on top face)
+   Candle + flame + smoke
    ========================= */
 .candle{
   position:absolute;
-  left: 52%;
+  left: 50%;
   top: -34px;
   transform: translateX(-50%);
   width: 26px;
