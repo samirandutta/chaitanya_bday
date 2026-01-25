@@ -38,5 +38,5 @@ setInterval(render, 1000);
 // We keep the autoplay flag and set it again on click for best chance of audio playing.
 btn.addEventListener("click", () => {
   sessionStorage.setItem("autoplaySong", "1");
-  window.location.href = "main.html";
+  window.location.href = "woah.html";
 });
