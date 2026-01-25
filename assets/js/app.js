@@ -1,16 +1,26 @@
 // =========================
-// Content
+// Content setup
 // =========================
 document.getElementById("title").innerText = CONFIG.title;
 document.getElementById("subtitle").innerText = CONFIG.subtitle;
 document.getElementById("letter").innerText = CONFIG.letter;
 
+// =========================
+// Audio (autoplay after intro click)
+// =========================
 const song = document.getElementById("song");
 song.src = CONFIG.song;
 
-document.getElementById("playBtn").onclick = () => {
-  song.paused ? song.play() : song.pause();
-};
+(function tryAutoplay() {
+  const flag = sessionStorage.getItem("autoplaySong");
+  if (flag === "1") {
+    sessionStorage.removeItem("autoplaySong");
+    song.play().catch(() => {
+      // If a browser blocks autoplay, it will just stay paused.
+      // (No button requested, so we fail silently.)
+    });
+  }
+})();
 
 // =========================
 // Gallery
@@ -39,23 +49,18 @@ updateTimer();
 setInterval(updateTimer, 1000 * 60 * 60);
 
 // =========================
-// BALLOONS (GUARANTEED)
+// Balloons (if you already had them)
 // =========================
 (function balloons() {
   let layer = document.querySelector(".balloon-layer");
   if (!layer) {
     layer = document.createElement("div");
     layer.className = "balloon-layer";
+    layer.setAttribute("aria-hidden", "true");
     document.body.prepend(layer);
   }
 
-  const colors = [
-    "#ff7aa2",
-    "#ffd27d",
-    "#96e6ff",
-    "#bef5cd",
-    "#d7beff"
-  ];
+  const colors = ["#ff7aa2", "#ffd27d", "#96e6ff", "#bef5cd", "#d7beff"];
 
   function spawn(side) {
     const b = document.createElement("div");
@@ -80,13 +85,6 @@ setInterval(updateTimer, 1000 * 60 * 60);
     b.addEventListener("animationend", () => b.remove());
   }
 
-  // immediate balloons
-  for (let i = 0; i < 12; i++) {
-    spawn(i % 2 === 0 ? "left" : "right");
-  }
-
-  // continuous
-  setInterval(() => {
-    spawn(Math.random() < 0.5 ? "left" : "right");
-  }, 400);
+  for (let i = 0; i < 12; i++) spawn(i % 2 === 0 ? "left" : "right");
+  setInterval(() => spawn(Math.random() < 0.5 ? "left" : "right"), 400);
 })();
