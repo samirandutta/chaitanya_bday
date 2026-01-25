@@ -17,20 +17,28 @@ body{
   color:#fff;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   text-align:center;
-  overflow:hidden;
+
+  /* IMPORTANT: allow content to be visible / scrollable */
+  overflow:auto;
 }
 
 .wrap{
   width:min(860px, 94vw);
+  min-height: 100vh;
   padding: 28px 18px 40px;
+  position: relative;
 }
 
+/* Both steps overlay each other */
 .step{
+  position: absolute;
+  inset: 0;
   display:flex;
   flex-direction: column;
   align-items:center;
   justify-content:center;
   gap: 14px;
+  padding: 28px 18px 40px;
 }
 
 .line{
@@ -50,7 +58,7 @@ body{
   to{ opacity:1; transform: translateY(0); }
 }
 
-/* World image fade-in after text */
+/* World image fades in after text */
 .worldTap{
   position: relative;
   width: min(360px, 78vw);
@@ -68,14 +76,11 @@ body{
   width: 100%;
   height: auto;
   display:block;
-
-  /* heartbeat */
   animation: beat 1.15s ease-in-out infinite;
   transform-origin: 50% 60%;
   filter: drop-shadow(0 14px 26px rgba(0,0,0,0.35));
 }
 
-/* subtle shine pulse */
 .glow{
   position:absolute;
   inset: 12% 18% 18% 18%;
@@ -106,7 +111,7 @@ body{
   opacity: 0.85;
 }
 
-/* step2 reveal */
+/* Step2 reveal */
 .step2{
   opacity: 0;
   pointer-events: none;
@@ -120,7 +125,7 @@ body{
   transform: translateY(0);
 }
 
-/* fade out step1 */
+/* Fade out step1 */
 .step1.fadeOut{
   animation: vanish 650ms ease forwards;
 }
@@ -129,26 +134,29 @@ body{
   to{ opacity: 0; transform: scale(0.98); filter: blur(2px); }
 }
 
+/* Us photo sizing: keep it on screen */
 .us{
-  width: 95%;          /* bigger on mobile */
-  max-width: 500px;    /* larger cap on desktop */
-  margin: 0 auto;
+  width: min(560px, 94vw);
+  max-height: 55vh;      /* prevents it from pushing caption off-screen */
   height: auto;
+  object-fit: contain;
   display:block;
   border-radius: 18px;
-  box-shadow: 0 22px 44px rgba(0,0,0,0.45);
+  box-shadow: 0 22px 40px var(--shadow);
 }
 
+/* Caption now always visible */
 .caption{
   font-family: Fraunces, serif;
   font-weight: 600;
   font-size: clamp(18px, 2.6vw, 28px);
   max-width: 860px;
+  margin-top: 6px;
   text-shadow: 0 10px 22px rgba(0,0,0,0.55);
 }
 
 .btn{
-  margin-top: 6px;
+  margin-top: 10px;
   padding: 0.85rem 1.4rem;
   border: 0;
   border-radius: 999px;
