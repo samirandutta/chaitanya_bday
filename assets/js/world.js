@@ -6,13 +6,12 @@ function revealUs() {
   step1.classList.add("fadeOut");
 
   setTimeout(() => {
-    // fully remove step1 from layout/clicks
     step1.style.display = "none";
-
+    document.getElementById("gifBg").style.opacity = "1";
     step2.classList.add("show");
-    step2.setAttribute("aria-hidden", "false");
   }, 650);
 }
+
 
 worldTap.addEventListener("click", revealUs);
 worldTap.addEventListener("keydown", (e) => {
