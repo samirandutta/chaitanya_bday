@@ -177,8 +177,8 @@ body{
 
 /* no tablet/card behind */
 .her{
-  width: 92%;          /* bigger on mobile */
-  max-width: 420px;    /* larger cap on desktop */
+  width: 95%;          /* bigger on mobile */
+  max-width: 500px;    /* larger cap on desktop */
   margin: 0 auto;
   height: auto;
   display:block;
