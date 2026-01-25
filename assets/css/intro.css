@@ -1,7 +1,6 @@
 :root{
   --bg1:#0f1020;
   --bg2:#1b1c33;
-  --pink:#ff7aa2;
   --shadow: rgba(0,0,0,0.35);
 }
 
@@ -21,19 +20,26 @@ body{
 }
 
 .wrap{
-  width:min(720px, 92vw);
+  width:min(760px, 92vw);
   padding: 32px 18px 40px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 900ms ease forwards;
+}
+
+@keyframes fadeUp{
+  to{ opacity:1; transform: translateY(0); }
 }
 
 h1{
   font-family: Fraunces, serif;
   font-weight:600;
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: clamp(34px, 5vw, 54px);
   margin: 0 0 10px;
 }
 
 .hint{
-  margin: 0 0 22px;
+  margin: 0 0 18px;
   opacity: 0.85;
   font-size: 1.05rem;
 }
@@ -59,10 +65,11 @@ h1{
   height: auto;
   display:block;
   border-radius: 18px;
+  /* no “tablet” border/background, just a soft shadow */
   box-shadow: 0 22px 40px var(--shadow);
 }
 
-/* Candle overlay positioning */
+/* Candle overlay */
 .candle{
   position:absolute;
   left: 50%;
@@ -70,10 +77,9 @@ h1{
   transform: translateX(-50%);
   width: 26px;
   height: 90px;
-  pointer-events: none; /* clicks go to the stage */
+  pointer-events: none;
 }
 
-/* Candle body */
 .candle-body{
   position:absolute;
   left:50%;
@@ -91,7 +97,6 @@ h1{
   border: 3px solid rgba(35,20,15,0.9);
 }
 
-/* Flame */
 .flame{
   position:absolute;
   left:50%;
@@ -111,7 +116,6 @@ h1{
   to   { transform: translateX(-50%) scale(1.05) rotate(2deg); }
 }
 
-/* Smoke (hidden until blown) */
 .smoke{
   position:absolute;
   left:50%;
@@ -123,7 +127,6 @@ h1{
   opacity: 0;
 }
 
-/* Blow-out state */
 .stage.blown .flame{
   animation: none;
   opacity: 0;
