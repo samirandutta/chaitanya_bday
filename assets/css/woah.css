@@ -1,3 +1,5 @@
+/* assets/css/woah.css (REPLACE FULL FILE) */
+
 :root{
   --shadow: rgba(0,0,0,0.35);
   --pink:#ff7aa2;
@@ -13,42 +15,25 @@ body{
   overflow:hidden;
 }
 
-/* background video tiling */
+/* background GIF tiling */
 .bg{
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: #000;
+
+  /* Replace this file with your GIF */
+  background-image: url("assets/img/catwoah.gif");
+  background-repeat: repeat;
+  background-size: 220px 220px; /* tile size, tweak if you want */
+  background-position: center;
 }
 
 .bg::after{
-  /* dark overlay so text is readable */
   content:"";
   position:absolute;
   inset:0;
   background: rgba(0,0,0,0.55);
   pointer-events:none;
-}
-
-/* The tiling trick:
-   We use one video, scale it down, then repeat by making the container huge with pattern illusion
-   using CSS background-size isn't possible for video, so we create a grid using multiple videos in JS.
-   But we can do it purely CSS by duplicating via box-shadow? Not for video.
-   So we do simple CSS grid with one video element repeated via JS (see woah.js). */
-
-.bgGrid{
-  position:absolute;
-  inset:0;
-  display:grid;
-  grid-template-columns: repeat(var(--cols, 3), 1fr);
-  grid-template-rows: repeat(var(--rows, 5), 1fr);
-}
-
-.tile{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display:block;
 }
 
 /* foreground */
@@ -72,12 +57,9 @@ body{
 }
 
 .her{
-  width: 85%;          /* was 100% */
-  max-width: 360px;    /* keeps it neat on large screens */
-  margin: 18px auto 0;
+  width: 100%;
   height: auto;
   display:block;
-  border-radius: 14px; /* optional: softer look */
 }
 
 .name{
