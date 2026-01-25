@@ -177,14 +177,15 @@ body{
 
 /* no tablet/card behind */
 .her{
-  width: 100%;
-  max-width: 340px;
+  width: 92%;          /* bigger on mobile */
+  max-width: 420px;    /* larger cap on desktop */
   margin: 0 auto;
   height: auto;
   display:block;
-  border-radius: 16px;
-  box-shadow: 0 18px 34px rgba(0,0,0,0.45);
+  border-radius: 18px;
+  box-shadow: 0 22px 44px rgba(0,0,0,0.45);
 }
+
 
 .name{
   font-family: Fraunces, serif;
