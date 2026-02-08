@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    if (sessionStorage.getItem("authed") !== "1") { window.location.href = "index.html"; }
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Letter for you</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/letter2.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1>letter for you! 💌</h1>
+
+    <section class="stage">
+      <p class="note">Click the letter.</p>
+
+      <div class="envelopeWrap">
+        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the letter">
+          <div class="env-body"></div>
+          <div class="letter"></div>
+          <div class="env-flap"></div>
+          <div class="stamp">♡</div>
+        </div>
+      </div>
+
+      <div class="hint">(or press Enter)</div>
+    </section>
+  </main>
+
+  <script src="assets/js/letter2.js"></script>
+</body>
+</html>
