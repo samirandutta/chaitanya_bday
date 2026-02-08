@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    if (sessionStorage.getItem("authed") !== "1") { window.location.href = "index.html"; }
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Knock Knock</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/knock.css">
+</head>
+<body>
+  <main class="wrap">
+    <div class="card">
+      <h1>Knock! Knock!</h1>
+      <p class="sub">psst… listen closely 👀</p>
+
+      <div class="knock" id="knockBox" aria-live="polite">
+        <div class="knockText">Knock! Knock!</div>
+      </div>
+
+      <button class="btn" id="toLetter">Who's there?</button>
+      <div class="hint">(tap anywhere if you don’t hear the sound)</div>
+    </div>
+  </main>
+
+  <script src="assets/js/knock.js"></script>
+</body>
+</html>
