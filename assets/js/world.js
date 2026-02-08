@@ -23,5 +23,5 @@ worldTap.addEventListener("keydown", (e) => {
 
 document.getElementById("toMain").addEventListener("click", () => {
   sessionStorage.setItem("autoplaySong", "1");
-  window.location.href = "together.html";
+  window.location.href = "team.html";
 });
