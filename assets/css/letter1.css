@@ -28,12 +28,12 @@ body{
 .wrap{ width:min(720px, 100%); }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:26px 20px;
-  backdrop-filter: blur(10px);
-  text-align:center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  backdrop-filter: none;
+  text-align: center;
 }
 
 .title{
@@ -44,12 +44,12 @@ body{
 }
 
 .media{
-  width:min(420px, 92%);
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,0.12);
-  box-shadow:0 18px 60px rgba(0,0,0,0.45);
-  display:block;
-  margin:0 auto 18px auto;
+  width: min(300px, 78vw);   /* smaller */
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+  display: block;
+  margin: 0 auto 18px auto;
 }
 
 .btn{
