@@ -7,6 +7,77 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    /* Keep balloons visible behind everything */
+    body{
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .top-controls{
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 9999;
+    }
+
+    .pill-btn{
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Center letter sheet */
+    .letter-sheet{
+      width: min(860px, 92vw);
+      background: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.35);
+      padding: 26px 22px;
+      z-index: 2; /* above balloons */
+    }
+
+    .letter-title{
+      font-family: Fraunces, serif;
+      font-size: clamp(28px, 4.2vw, 44px);
+      margin: 0 0 14px 0;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .letter-body{
+      font-size: 16px;
+      line-height: 1.75;
+      white-space: pre-wrap; /* keep your line breaks */
+      margin: 0;
+    }
+
+    /* Optional: subtle paper texture feel */
+    .letter-sheet:before{
+      content:"";
+      display:block;
+      height: 10px;
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      background: linear-gradient(90deg, rgba(255,122,162,0.12), rgba(120,190,255,0.10));
+    }
+
+    /* Ensure balloons layer stays behind */
+    .balloon-layer{
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -14,10 +85,9 @@
   <!-- Balloon animation layer -->
   <div class="balloon-layer" aria-hidden="true"></div>
 
-  <!-- Top-right controls -->
+  <!-- Music button -->
   <div class="top-controls">
     <button id="musicBtn" class="pill-btn">Music</button>
-    <button id="openLetterBtn" class="pill-btn">Open letter</button>
   </div>
 
   <!-- Background music -->
@@ -25,72 +95,28 @@
     <source src="assets/audio/song.mp3" type="audio/mpeg">
   </audio>
 
-  <main>
-    <section class="hero">
-      <h1 id="title"></h1>
-      <p id="subtitle"></p>
-    </section>
+  <!-- Center letter -->
+  <main class="letter-sheet">
+    <h1 class="letter-title">A letter for you</h1>
 
-    <!-- Letter section stays, but is now optional / secondary -->
-    <section class="letter">
-      <h2>A Letter for You</h2>
-      <p id="letter"></p>
-    </section>
+    <!-- WRITE YOUR LETTER HERE -->
+    <p class="letter-body">
+Hi Chaitanya,
 
-    <section class="gallery">
-      <h2>Us 💕</h2>
-      <div class="grid" id="gallery"></div>
-    </section>
-
-    <section class="countdown">
-      <h2>Time Since You Were Born ✨</h2>
-      <p id="timer"></p>
-    </section>
+[Write your letter here...]
+    </p>
   </main>
 
-  <!-- Letter modal -->
-  <div id="letterModal" class="letter-modal" aria-hidden="true">
-    <div class="letter-sheet" role="dialog" aria-modal="true">
-      <div class="letter-bar">
-        <span>A letter for you</span>
-        <button id="closeLetterBtn" class="x-btn">✕</button>
-      </div>
-
-      <textarea
-        id="letterText"
-        placeholder="Write your letter here…"
-      ></textarea>
-
-      <div class="letter-actions">
-        <button id="saveLetterBtn" class="pill-btn">Save</button>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>Made with ❤️ just for you</p>
-  </footer>
-
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/app.js"></script>
-
-  <!-- Letter + music logic -->
   <script>
     (function () {
       const musicBtn = document.getElementById("musicBtn");
       const audio = document.getElementById("song");
 
-      const openLetterBtn = document.getElementById("openLetterBtn");
-      const modal = document.getElementById("letterModal");
-      const closeBtn = document.getElementById("closeLetterBtn");
-      const saveBtn = document.getElementById("saveLetterBtn");
-      const textArea = document.getElementById("letterText");
-
-      /* ---------- MUSIC ---------- */
       let playing = false;
+
       musicBtn.addEventListener("click", async () => {
-        try {
-          if (!playing) {
+        try{
+          if(!playing){
             await audio.play();
             playing = true;
             musicBtn.textContent = "Pause music";
@@ -99,43 +125,9 @@
             playing = false;
             musicBtn.textContent = "Music";
           }
-        } catch (e) {
-          console.warn("Autoplay blocked until interaction.");
+        } catch(e){
+          console.warn("Could not start audio. Check file path: assets/audio/song.mp3");
         }
-      });
-
-      /* ---------- LETTER ---------- */
-      const saved = localStorage.getItem("birthdayLetterText");
-      if (saved) textArea.value = saved;
-
-      function openModal(){
-        modal.classList.add("open");
-        modal.setAttribute("aria-hidden","false");
-        setTimeout(() => textArea.focus(), 50);
-      }
-
-      function closeModal(){
-        modal.classList.remove("open");
-        modal.setAttribute("aria-hidden","true");
-      }
-
-      openLetterBtn.addEventListener("click", openModal);
-      closeBtn.addEventListener("click", closeModal);
-
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) closeModal();
-      });
-
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("open")) {
-          closeModal();
-        }
-      });
-
-      saveBtn.addEventListener("click", () => {
-        localStorage.setItem("birthdayLetterText", textArea.value);
-        saveBtn.textContent = "Saved ✓";
-        setTimeout(() => saveBtn.textContent = "Save", 1000);
       });
     })();
   </script>
