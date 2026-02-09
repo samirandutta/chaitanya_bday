@@ -14,13 +14,24 @@
   <!-- Balloon animation layer -->
   <div class="balloon-layer" aria-hidden="true"></div>
 
+  <!-- Top-right controls -->
+  <div class="top-controls">
+    <button id="musicBtn" class="pill-btn">Music</button>
+    <button id="openLetterBtn" class="pill-btn">Open letter</button>
+  </div>
+
+  <!-- Background music -->
+  <audio id="song" loop>
+    <source src="assets/audio/song.mp3" type="audio/mpeg">
+  </audio>
+
   <main>
     <section class="hero">
       <h1 id="title"></h1>
       <p id="subtitle"></p>
-      <audio id="song" loop></audio>
     </section>
 
+    <!-- Letter section stays, but is now optional / secondary -->
     <section class="letter">
       <h2>A Letter for You</h2>
       <p id="letter"></p>
@@ -37,11 +48,97 @@
     </section>
   </main>
 
+  <!-- Letter modal -->
+  <div id="letterModal" class="letter-modal" aria-hidden="true">
+    <div class="letter-sheet" role="dialog" aria-modal="true">
+      <div class="letter-bar">
+        <span>A letter for you</span>
+        <button id="closeLetterBtn" class="x-btn">✕</button>
+      </div>
+
+      <textarea
+        id="letterText"
+        placeholder="Write your letter here…"
+      ></textarea>
+
+      <div class="letter-actions">
+        <button id="saveLetterBtn" class="pill-btn">Save</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <p>Made with ❤️ just for you</p>
   </footer>
 
   <script src="assets/js/config.js"></script>
   <script src="assets/js/app.js"></script>
+
+  <!-- Letter + music logic -->
+  <script>
+    (function () {
+      const musicBtn = document.getElementById("musicBtn");
+      const audio = document.getElementById("song");
+
+      const openLetterBtn = document.getElementById("openLetterBtn");
+      const modal = document.getElementById("letterModal");
+      const closeBtn = document.getElementById("closeLetterBtn");
+      const saveBtn = document.getElementById("saveLetterBtn");
+      const textArea = document.getElementById("letterText");
+
+      /* ---------- MUSIC ---------- */
+      let playing = false;
+      musicBtn.addEventListener("click", async () => {
+        try {
+          if (!playing) {
+            await audio.play();
+            playing = true;
+            musicBtn.textContent = "Pause music";
+          } else {
+            audio.pause();
+            playing = false;
+            musicBtn.textContent = "Music";
+          }
+        } catch (e) {
+          console.warn("Autoplay blocked until interaction.");
+        }
+      });
+
+      /* ---------- LETTER ---------- */
+      const saved = localStorage.getItem("birthdayLetterText");
+      if (saved) textArea.value = saved;
+
+      function openModal(){
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden","false");
+        setTimeout(() => textArea.focus(), 50);
+      }
+
+      function closeModal(){
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden","true");
+      }
+
+      openLetterBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("open")) {
+          closeModal();
+        }
+      });
+
+      saveBtn.addEventListener("click", () => {
+        localStorage.setItem("birthdayLetterText", textArea.value);
+        saveBtn.textContent = "Saved ✓";
+        setTimeout(() => saveBtn.textContent = "Save", 1000);
+      });
+    })();
+  </script>
+
 </body>
 </html>
