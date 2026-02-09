@@ -36,40 +36,32 @@
 
     /* Center letter sheet */
     .letter-sheet{
-      width: min(860px, 92vw);
-      background: rgba(255,255,255,0.92);
-      border-radius: 18px;
-      box-shadow: 0 30px 90px rgba(0,0,0,0.35);
-      padding: 26px 22px;
-      z-index: 2; /* above balloons */
+    width: min(860px, 92vw);
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.35);
+    padding: 26px 22px;
+    z-index: 2;
+    color: #000; /* force black text */
     }
-
+  
     .letter-title{
-      font-family: Fraunces, serif;
-      font-size: clamp(28px, 4.2vw, 44px);
-      margin: 0 0 14px 0;
-      letter-spacing: -0.02em;
-      text-align: center;
+    font-family: Fraunces, serif;
+    font-size: clamp(28px, 4.2vw, 44px);
+    margin: 0 0 14px 0;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #000;
     }
-
+  
     .letter-body{
-      font-size: 16px;
-      line-height: 1.75;
-      white-space: pre-wrap; /* keep your line breaks */
-      margin: 0;
+    font-size: 16px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    margin: 0;
+    color: #000; /* ensure black text */
     }
-
-    /* Optional: subtle paper texture feel */
-    .letter-sheet:before{
-      content:"";
-      display:block;
-      height: 10px;
-      width: 100%;
-      border-radius: 14px;
-      margin-bottom: 14px;
-      background: linear-gradient(90deg, rgba(255,122,162,0.12), rgba(120,190,255,0.10));
-    }
-
+    
     /* Ensure balloons layer stays behind */
     .balloon-layer{
       position: fixed;
@@ -97,13 +89,13 @@
 
   <!-- Center letter -->
   <main class="letter-sheet">
-    <h1 class="letter-title">A letter for you</h1>
 
     <!-- WRITE YOUR LETTER HERE -->
     <p class="letter-body">
-Hi Chaitanya,
-
-[Write your letter here...]
+Hello madamji, 
+I’m sorry I couldn’t be by your side today. I hope this brought a little smile to your face. I couldn’t be more grateful for the opportunity to spend the rest of my life with you, and I know we will get through this.
+You are stunningly beautiful, but that is perhaps the least remarkable thing about you. You are one of the most resilient people I have ever known — you carry an incredible strength in the way you face everything, quietly and gracefully, without ever letting anyone see how heavy it sometimes is. And yet, you remain gentle, 
+I admire the courage in your silence, the kindness in your words, and the warmth you bring into my life simply by being you. I am so proud of you, and so grateful that I get to walk this journey with you—always, hand in hand.
     </p>
   </main>
 
