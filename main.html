@@ -18,7 +18,7 @@
       overflow-x: hidden;
     }
 
-    /* Balloon layer always behind */
+    /* Balloons behind everything */
     .balloon-layer{
       position: fixed;
       inset: 0;
@@ -26,7 +26,7 @@
       pointer-events: none;
     }
 
-    /* Music button */
+    /* Music button top-right */
     .top-controls{
       position: fixed;
       top: 16px;
@@ -42,9 +42,9 @@
       cursor: pointer;
     }
 
-    /* Center letter */
-    main.letter-sheet{
-      position: relative; /* critical */
+    /* NEW class name to avoid clashing with styles.css .letter-sheet */
+    .letter-paper{
+      position: relative;
       width: min(860px, 92vw);
       background: rgba(255,255,255,0.95);
       border-radius: 18px;
@@ -52,6 +52,10 @@
       padding: 26px 22px;
       z-index: 2;
       color: #000;
+
+      /* Important: allow full content to show */
+      height: auto;
+      overflow: visible;
     }
 
     .letter-body{
@@ -63,43 +67,42 @@
       text-align: justify;
     }
 
-    /* Last question button */
     .next-wrap{
-      margin-top: 26px;
+      margin-top: 22px;
       display: flex;
       justify-content: center;
     }
 
     #lastQuestionBtn{
-      background: #ff7aa2; /* force visible */
+      background: #ff7aa2;
       color: #111;
-      display: inline-block;
-      z-index: 5;
       padding: 12px 20px;
       font-weight: 900;
+      display: inline-block;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Balloons -->
+  <!-- Balloon animation layer -->
   <div class="balloon-layer" aria-hidden="true"></div>
 
-  <!-- Music -->
+  <!-- Music button -->
   <div class="top-controls">
     <button id="musicBtn" class="pill-btn">Some music perhaps?</button>
   </div>
 
+  <!-- Background music -->
   <audio id="song" loop>
     <source src="assets/img/song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Letter -->
-  <main class="letter-sheet">
+  <!-- Center letter -->
+  <main class="letter-paper">
     <p class="letter-body">
 Hello madamji, 
-I’m sorry I couldn’t be by your side today. I hope this brought a little smile to your face. I couldn’t be more honored for the opportunity to spend the rest of my life with you, and I know we will get through this. You are stunningly beautiful, but that is perhaps the least remarkable thing about you. You are one of the most resilient people I have ever known — you carry an incredible strength in the way you face everything, quietly and gracefully, without ever letting anyone see how heavy it sometimes is. And yet, you remain gentle (although you could be just a little more gentle with me too… jk). Twenty-six years of gracing this world with your presence, it feels almost unfair that I’ve only known you for six months of them. But I’m grateful that I get to be here now, and even more grateful for every moment, every memory, and every little milestone that still lies ahead of us. I love the muehehehe and snorts, the little dance when the food is good, the way you get excited when you spot small and unique jewellery, the way you feed me and above all, the way you carry yourself. I love you, baby. 
+I’m sorry I couldn’t be by your side today. I hope this brought a little smile to your face. I couldn’t be more honored for the opportunity to spend the rest of my life with you, and I know we will get through this. You are stunningly beautiful, but that is perhaps the least remarkable thing about you. You are one of the most resilient people I have ever known — you carry an incredible strength in the way you face everything, quietly and gracefully, without ever letting anyone see how heavy it sometimes is. And yet, you remain gentle (although you could be just a little more gentle with me too… jk). Twenty-six years of gracing this world with your presence, it feels almost unfair that I’ve only known you for six months of them. But I’m grateful that I get to be here now, and even more grateful for every moment, every memory, and every little milestone that still lies ahead of us. I love the muehehehe and snorts, the little dance when the food is good, the way you get excited when you spot small and unique jewellery, the way you feed me and above all, the way you carry yourself. May you keep smiling and bullying me forever. I love you, baby. 
 
 <br><br>
 with love,<br>
@@ -131,7 +134,7 @@ with love,<br>
             musicBtn.textContent = "Some music perhaps?";
           }
         } catch(e){
-          console.warn("Could not start audio");
+          console.warn("Could not start audio. Check file path: assets/img/song.mp3");
         }
       });
 
