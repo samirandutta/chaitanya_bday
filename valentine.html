@@ -254,9 +254,14 @@
       }
 
       yesBtn.addEventListener("click", () => {
-        blastConfetti();
-        msg.classList.add("show");
-      });
+    blastConfetti();
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        window.location.href = "valentine1.html";
+    }, 1500); // slight delay so confetti shows
+});
+
     })();
   </script>
 
