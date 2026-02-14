@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>!!!!</title>
+
+<style>
+body{
+    margin:0;
+    background:#b30000; /* deep red */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+    font-family: Arial, sans-serif;
+    color:white;
+}
+
+h1{
+    position:absolute;
+    top:30px;
+    font-size:60px;
+    z-index:2;
+}
+
+video{
+    max-width:90%;
+    max-height:80vh;
+    border-radius:20px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+
+<body>
+
+<h1>!!!!</h1>
+
+<video id="trunksVideo" autoplay playsinline>
+    <source src="assets/video/trunks.mp4" type="video/mp4">
+</video>
+
+<script>
+const video = document.getElementById("trunksVideo");
+
+// Go to next page when video ends
+video.addEventListener("ended", () => {
+    window.location.href = "valentine2.html";
+});
+
+// Also allow click to skip
+document.body.addEventListener("click", () => {
+    window.location.href = "valentine2.html";
+});
+</script>
+
+</body>
+</html>
